@@ -1,0 +1,26 @@
+<div class="login">
+  <mat-card class="login__content">
+    <div class="login__welcome">
+      <h2>Добро пожаловать!</h2>
+      <span>Для продолжения введите свои логин и пароль</span>
+    </div>
+    <form class="login__form">
+      <mat-form-field>
+        <mat-label>Логин</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password">
+      </mat-form-field>
+    </form>
+    <button
+      mat-raised-button
+      color="accent"
+      class="login__submit"
+      (click)="login()"
+    >
+      Войти
+    </button>
+  </mat-card>
+</div>

@@ -1,0 +1,72 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import "../variables";
+
+$sib-light-blue: map_merge(
+    $mat-light-blue,
+    (
+      500: $primary-color,
+    )
+);
+
+$sib-orange: map_merge(
+    $mat-orange,
+    (
+      A200: $accent-color,
+      contrast:
+      map_merge(
+          map_get($mat-orange, contrast),
+          (
+            A200: white,
+          )
+      ),
+    )
+);
+
+$sib-red: map_merge(
+    $mat-red,
+    (
+      500: $war-color,
+    )
+);
+
+$sib-primary: mat-palette($sib-light-blue, 500, 200);
+$sib-accent: mat-palette($sib-orange, A200, 300, A700, 50);
+$sib-warn: mat-palette($sib-red, 500);
+
+$sib-theme: mat-dark-theme($sib-primary, $sib-accent, $sib-warn);
+
+$foreground: map_merge(
+    map-get($sib-theme, foreground),
+    (
+      text: $app-text-color,
+      divider: $primary-color,
+      slider-min: $accent-color,
+      slider-off: $primary-color,
+      slider-off-active: $primary-color,
+    )
+);
+
+$background: map_merge(
+    map-get($sib-theme, background),
+    (
+      card: $card-background-color,
+    )
+);
+
+$sib-theme: map_merge(
+    $sib-theme,
+    (
+      foreground: $foreground,
+      background: $background,
+    )
+);
+
+$sib-typography: mat-typography-config(
+  $headline: mat-typography-level(28px, 52px, 500), // h1
+  $title: mat-typography-level(18px, 28px, 500), // h2
+);
+
+@include angular-material-theme($sib-theme);
+@include angular-material-typography($sib-typography);

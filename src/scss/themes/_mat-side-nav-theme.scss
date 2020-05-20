@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import "../variables";
+@import "main-theme";
+
+.mat-side-nav-theme {
+
+  $foreground: map_merge(
+      map-get($sib-theme, foreground),
+      (
+        divider: transparent,
+      )
+  );
+
+  $background: map_merge(
+      map-get($sib-theme, background),
+      (
+        dialog: $app-background-color,
+        background: $app-background-color,
+      )
+  );
+
+  $sib-theme: map_merge(
+      $sib-theme,
+      (
+        foreground: $foreground,
+        background: $background,
+      )
+  );
+  @include mat-sidenav-theme($sib-theme);
+}
+

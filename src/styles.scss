@@ -1,1 +1,17 @@
+@import "scss/variables";
+@import "scss/themes/main-theme";
+@import "scss/themes/mat-side-nav-theme";
+
+
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: $app-background-color;
+  color: $app-text-color;
+  overflow-x: hidden;
+  margin: 0;
+}
