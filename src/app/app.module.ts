@@ -3,9 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from "./app-routing.module";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
-import { InnerLayoutComponent } from './pages/inner-layout/inner-layout.component';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from "@ngrx/store";
+import { reducers, effects } from '@app-common/store/store-config';
 
 @NgModule({
   declarations: [
@@ -15,6 +20,9 @@ import { InnerLayoutComponent } from './pages/inner-layout/inner-layout.componen
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot(effects),
   ],
   providers: [
     {

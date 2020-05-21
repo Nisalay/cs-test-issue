@@ -1,0 +1,9 @@
+.topbar {
+  position: relative;
+  z-index: 2;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+  }
+}

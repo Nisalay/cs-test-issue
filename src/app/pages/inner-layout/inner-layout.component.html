@@ -1,21 +1,6 @@
 <div class="inner-layout">
   <app-topbar></app-topbar>
-  <div class="inner-layout__content mat-side-nav-theme">
-    <mat-drawer-container class="side-nav" autosize>
-      <mat-drawer #drawer mode="side" class="side-nav__menu mat-elevation-z8">
-        <p>Auto-resizing sidenav</p>
-        <p>Lorem, ipsum dolor sit amet consectetur.</p>
-        <button mat-raised-button>
-          Toggle extra text
-        </button>
-      </mat-drawer>
-
-      <div class="example-sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()">
-          Toggle sidenav
-        </button>
-      </div>
-
-    </mat-drawer-container>
+  <div class="inner-layout__side-nav-wrapper">
+    <app-side-nav></app-side-nav>
   </div>
 </div>

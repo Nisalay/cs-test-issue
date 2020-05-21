@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InnerLayoutComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit() {
+  }
 }

@@ -16,7 +16,8 @@
   $background: map_merge(
       map-get($sib-theme, background),
       (
-        dialog: $app-background-color,
+        card: transparent,
+        dialog: transparent,
         background: $app-background-color,
       )
   );
@@ -29,5 +30,6 @@
       )
   );
   @include mat-sidenav-theme($sib-theme);
+  @include mat-tree-theme($sib-theme);
 }
 

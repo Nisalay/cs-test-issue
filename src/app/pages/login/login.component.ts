@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    this.router.navigate(['contracts'])
+    this.router.navigate(['products'])
   }
 
 }

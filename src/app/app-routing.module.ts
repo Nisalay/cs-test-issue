@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from "@angular/router";
+import { GetProductsResolver } from './router/resolvers/get-products.resolver';
+import { GetDictionariesResolver } from './router/resolvers/get-dictionaries.resolver';
 
 const routes: Routes = [
   {
@@ -16,9 +18,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/login/login.module').then(loaded => loaded.LoginModule)
       },
       {
-        path: ':main',
-        loadChildren: () => import('./pages/inner-layout/inner-layout.module').then(loaded => loaded.InnerLayoutModule)
-      }
+        path: 'products',
+        loadChildren: () => import('./pages/inner-layout/inner-layout.module').then(loaded => loaded.InnerLayoutModule),
+      },
     ]
   }
 ]

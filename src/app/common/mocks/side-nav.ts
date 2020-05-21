@@ -1,0 +1,44 @@
+export const sideNavMock: SideNavItemDTO[] = [
+  {
+    name: 'Мужчины',
+    code: 'male',
+    children: [
+      {
+        name: 'Обувь',
+        code: 'shoes',
+        children: [
+          {
+            name: 'Кроссовки',
+            code: 'sneakers'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Женщины',
+    code: 'female',
+    children: [
+      {
+        name: 'Обувь',
+        code: 'shoes',
+        children: [
+          {
+            name: 'Кроссовки',
+            code: 'sneakers'
+          }
+        ]
+      },
+      {
+        name: 'Одежда',
+        code: 'clothes',
+        children: [
+          {
+            name: 'Платья',
+            code: 'dresses',
+          }
+        ]
+      }
+    ]
+  }
+];

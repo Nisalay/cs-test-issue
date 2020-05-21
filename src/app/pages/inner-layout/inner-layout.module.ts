@@ -8,12 +8,17 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { CommonModule } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTreeModule } from "@angular/material/tree";
+import { MatIconModule } from "@angular/material/icon";
+import { ProductsTableComponent } from './components/products-table/products-table.component';
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   declarations: [
     InnerLayoutComponent,
     TopbarComponent,
-    SideNavComponent
+    SideNavComponent,
+    ProductsTableComponent
   ],
   imports: [
     InnerLayoutRoutingModule,
@@ -21,6 +26,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     CommonModule,
     MatButtonModule,
     MatToolbarModule,
+    MatTreeModule,
+    MatIconModule,
+    MatTableModule,
   ],
 
 })
