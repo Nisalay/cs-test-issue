@@ -1,3 +1,6 @@
+/**
+ * Мок бокового меню
+ */
 export const sideNavMock: SideNavItemDTO[] = [
   {
     name: 'Мужчины',

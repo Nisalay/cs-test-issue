@@ -7,11 +7,19 @@ export const selectSideNav = createSelector(
   (state: AppState['sideNav']) => state.data
 )
 
+/**
+ * Селекттор для получения выбранного элемента меню по коду продукта
+ * Используется рекурсия функции getChild
+ * Производит поиск в полном списке меню
+ */
 export const selectSideNavItem = createSelector(
   selectSideNavStore,
   selectSideNav,
   (state: AppState['sideNav'], items: SideNavItemDTO[]) => {
     const { selectedItemCode } = state;
+    /**
+     * Найденный элемент меню
+     */
     let found: SideNavItemDTO;
     const getChild = <T extends SideNavItemDTO>(item: T, code: string): T => {
       if (item.code !== code) {

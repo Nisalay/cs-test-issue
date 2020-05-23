@@ -1,3 +1,7 @@
+/**
+ * Мок для получения продуктов
+ * На уровне сервиса, фильтруется по категории
+ */
 export const productsMock: { [categoryName: string]: ProductDTO[] } = {
   sneakers: [
     {

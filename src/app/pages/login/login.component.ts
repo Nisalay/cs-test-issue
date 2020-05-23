@@ -15,9 +15,8 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
+  /** ошибка авторизации */
   public error$: Observable<StateErrorDTO>;
-
-  private subscription$: Subscription = new Subscription();
 
   constructor(
     private store: Store<AppState>,
@@ -33,6 +32,9 @@ export class LoginComponent implements OnInit {
     this.error$ = this.store.select(fromSelectors.login.selectLoginError);
   }
 
+  /**
+   * Авторизация
+   */
   public login() {
     this.store.dispatch(Login(this.form.value));
   }

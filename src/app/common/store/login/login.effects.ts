@@ -10,6 +10,8 @@ import {
 } from '@app-common/store/login/login.actions';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import { SetProductsInitialState } from '@app-common/store/products/product.actions';
+import { SetSideNavInitialState } from '@app-common/store/side-nav/side-nav.actions';
 
 @Injectable()
 export class LoginEffects {
@@ -19,13 +21,17 @@ export class LoginEffects {
     private router: Router,
   ) {}
 
+  /**
+   * Эффект для авторизации в системе
+   * В случае успеха, так же добавляет в sessionStorage access_token
+   * Иначе добавляет ошибку в стору
+   */
   @Effect()
   login$ = this.actions$.pipe(
     ofType(LoginActionsTypes.Login),
     switchMap(({ type, ...params }: ActionPayloadDTO<AuthorizationDataDTO>) =>
       this.loginService.login(params)
         .pipe(
-          tap(console.log),
           tap((login: LoginDTO) => sessionStorage.setItem('access_token', login.access_token)),
           tap((login: LoginDTO) => this.router.navigate(['products'])),
           map((login: LoginDTO) => SetLoginData(login)),
@@ -33,12 +39,20 @@ export class LoginEffects {
         ))
   )
 
+  /**
+   * Эффект для выхода из системы
+   * Очищает всю стору и sessionStorage
+   */
   @Effect()
   logout$ = this.actions$.pipe(
     ofType(LoginActionsTypes.Logout),
     switchMap(() => this.loginService.logout()),
     tap(() => this.router.navigate(['login'])),
-    tap(() => sessionStorage.removeItem('access_token')),
-    map(() => SetLoginInitialState()),
+    tap(() => sessionStorage.clear()),
+    switchMap(() => [
+      SetLoginInitialState(),
+      SetProductsInitialState(),
+      SetSideNavInitialState(),
+    ]),
   )
 }

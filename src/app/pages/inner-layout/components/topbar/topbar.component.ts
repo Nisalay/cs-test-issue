@@ -12,7 +12,7 @@ import { Logout } from '@app-common/store/login/login.actions';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-  public currentCategory$: Observable<string>;
+  /** текущий элемент списка */
   public selectSideNavItem$: Observable<SideNavItemDTO>;
 
   constructor(
@@ -20,24 +20,15 @@ export class TopbarComponent implements OnInit {
     private store: Store<AppState>
   ) { }
 
-  ngOnInit(): void {
-    this.store.pipe(
-      select(fromSelectors.sideNav.selectSideNav),
-      first(),
-    ).subscribe()
-
-    this.currentCategory$ = this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd),
-        map((event: NavigationEnd) => event.url.split('/').pop())
-      )
-
-    this.selectSideNavItem$ = this.store
-      .pipe(
+  ngOnInit() {
+    this.selectSideNavItem$ = this.store.pipe(
         select(fromSelectors.sideNav.selectSideNavItem)
       )
   }
 
+  /**
+   * Выход из системы
+   */
   public logout() {
     this.store.dispatch(Logout());
   }

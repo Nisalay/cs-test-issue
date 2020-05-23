@@ -25,11 +25,16 @@ export class EditTableDialogComponent implements OnInit {
       size: [''],
       price: ['', Validators.pattern(/^(0|[1-9]\d*)?$/)],
     });
+    /** заполнение формы */
     if (this.data.data) {
       this.form.patchValue(this.data.data)
     }
   }
 
+  /**
+   * Сохранение или добавление значения в таблицу,
+   * в зависимости от переданного действия
+   */
   public save() {
     switch (this.data.event) {
       case 'edit':
@@ -45,6 +50,10 @@ export class EditTableDialogComponent implements OnInit {
     this.closeDialog();
   }
 
+  /**
+   * Удаление продукта из таблицы
+   * @param isAccept - подтверждение удаления
+   */
   public delete(isAccept: boolean) {
     if (isAccept) {
       this.store.dispatch(DeleteProduct({ id: this.data.data.id }))
@@ -52,6 +61,9 @@ export class EditTableDialogComponent implements OnInit {
     this.closeDialog();
   }
 
+  /**
+   * Закрытие модального окна
+   */
   private closeDialog() {
     this.dialogRef.close();
   }
