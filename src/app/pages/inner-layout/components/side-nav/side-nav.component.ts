@@ -13,6 +13,7 @@ import * as fromSelectors from '@app-common/store/selectors';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
+  /** данные для mat-tree */
   public dataSource: MatTreeFlatDataSource<SideNavItemDTO, NodeOptionsDTO>;
   public treeControl: TreeControl;
   private treeFlattener: TreeFlattener;
@@ -37,6 +38,7 @@ export class SideNavComponent implements OnInit {
   }
 
   ngOnInit() {
+    /** Получение текущего элемента списка */
     this.store
       .pipe(
         select(fromSelectors.sideNav.selectSideNav),
@@ -48,7 +50,7 @@ export class SideNavComponent implements OnInit {
 
   public hasChild = (_: number, node: NodeOptionsDTO) => node.expandable;
 
-  private transformer = (node: SideNavItemDTO, level: number) => {
+  private transformer = (node: SideNavItemDTO, level: number): NodeOptionsDTO => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,

@@ -13,8 +13,11 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./products-table.component.scss']
 })
 export class ProductsTableComponent implements OnInit {
+  /** данные для таблицы */
   public dataSource: MatTableDataSource<ProductDTO> = new MatTableDataSource();
+  /** выводимые колонки */
   public displayedColumns = ['name', 'size', 'price', 'actions'];
+  /** индикатор загрузки */
   public pending$: Observable<boolean>;
 
   constructor(
@@ -30,7 +33,11 @@ export class ProductsTableComponent implements OnInit {
     this.pending$ = this.store.select(fromSelectors.products.selectPending);
   }
 
-  public sortData(sort: Sort) {
+  /**
+   * Сортирует таблицу
+   * @param sort - объект сортировки, который возвращает mat-table
+   */
+  public sortData(sort: Sort): void {
     this.dataSource.data = [...this.dataSource.data].sort((a, b) => {
       const first = typeof a[sort.active] === 'string' ? a[sort.active].toLowerCase() : a[sort.active]
       const second = typeof b[sort.active] === 'string' ? b[sort.active].toLowerCase() : a[sort.active]
@@ -38,21 +45,30 @@ export class ProductsTableComponent implements OnInit {
     })
   }
 
+  /**
+   * Открытие диалогового окна
+   * @param data - данные строки таблицы
+   * @param event - выполняемое действие
+   */
   public openDialog({ data, event }: EditTableDialogConfigDTO) {
-    const dialogRef = this.dialog.open(EditTableDialogComponent, {
+    this.dialog.open(EditTableDialogComponent, {
       width: '350px',
       data: {
         event,
         data
       }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
 
-  private compare(a: number | string, b: number | string, isAsc: boolean) {
+  /**
+   * Сравнивает 2 переменные между собой
+   * Используется в методе sort()
+   * @param a - первый элемент
+   * @param b - следующий элемент
+   * @param isAsc - направление сортировки
+   * @return - -1, 0, 1 в зависимости от сортировки
+   */
+  private compare(a: number | string, b: number | string, isAsc: boolean): number {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 

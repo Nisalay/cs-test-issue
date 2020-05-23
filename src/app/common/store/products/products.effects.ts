@@ -16,6 +16,10 @@ export class ProductsEffects {
     private store: Store<AppState>
   ) {}
 
+  /**
+   * Эффект для получения продуктов по соответствующей категории
+   * Так же устанавливает выбранную категорию (selectedItemCode)
+   */
   @Effect()
   readProducts$ = this.actions$.pipe(
     ofType(ProductsActionTypes.ReadProducts),
@@ -30,6 +34,9 @@ export class ProductsEffects {
     })
   )
 
+  /**
+   * Эффект для добавления продукта в выбранную категорию
+   */
   @Effect()
   createProduct$ = this.actions$.pipe(
     ofType(ProductsActionTypes.CreateProduct),
@@ -40,6 +47,9 @@ export class ProductsEffects {
     map((products: ProductDTO[]) => SetProductsSuccess({ products }))
   )
 
+  /**
+   * Эффект для изменения продукта в выбранной категории
+   */
   @Effect()
   updateProduct$ = this.actions$.pipe(
     ofType(ProductsActionTypes.UpdateProduct),
@@ -50,11 +60,14 @@ export class ProductsEffects {
     map((products: ProductDTO[]) => SetProductsSuccess({ products }))
   )
 
+  /**
+   * Эффект для удаления продукта из выбранной категории
+   */
   @Effect()
   deleteProduct$ = this.actions$.pipe(
     ofType(ProductsActionTypes.DeleteProduct),
     withLatestFrom(this.store.select(fromSelectors.sideNav.selectSideNavItem)),
-    switchMap(([{ type, id }, sideNavItem]: [any, SideNavItemDTO]) => {
+    switchMap(([{ id }, sideNavItem]: [any, SideNavItemDTO]) => {
       return this.productService.deleteProduct({ id, categoryName: sideNavItem.code })
     }),
     map((products: ProductDTO[]) => SetProductsSuccess({ products }))

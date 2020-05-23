@@ -11,6 +11,9 @@ export class SideNavEffects {
     private dictionariesService: DictionariesService
   ) {}
 
+  /**
+   * Эффект для получения списка меню
+   */
   @Effect()
   readSideNav$ = this.actions$.pipe(
     ofType(SideNavActionsTypes.ReadSideNavItems),

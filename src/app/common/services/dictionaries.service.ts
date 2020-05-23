@@ -9,7 +9,11 @@ export class DictionariesService {
 
   constructor() { }
 
-  getSideNavItems(): Observable<SideNavItemDTO[]> {
+  /**
+   * Получение списка бокового меню целиком
+   * @return - замоканное меню
+   */
+  public getSideNavItems(): Observable<SideNavItemDTO[]> {
     return of(sideNavMock);
   }
 }
