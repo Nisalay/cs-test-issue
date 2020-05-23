@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete {
+  &__actions {
+    display: flex;
+    min-width: 100%;
+    justify-content: flex-end;
+    button {
+      margin-right: 20px;
+    }
+  }
+
+}

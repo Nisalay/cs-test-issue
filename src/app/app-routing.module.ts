@@ -16,9 +16,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/login/login.module').then(loaded => loaded.LoginModule)
       },
       {
-        path: ':main',
-        loadChildren: () => import('./pages/inner-layout/inner-layout.module').then(loaded => loaded.InnerLayoutModule)
-      }
+        path: 'products',
+        loadChildren: () => import('./pages/inner-layout/inner-layout.module').then(loaded => loaded.InnerLayoutModule),
+      },
     ]
   }
 ]

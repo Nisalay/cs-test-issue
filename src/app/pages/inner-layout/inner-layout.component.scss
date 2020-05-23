@@ -1,16 +1,8 @@
 .inner-layout {
   height: 100%;
 
-  .inner-layout__content {
-    // Полная высота - высота mat-toolbar
+  &__side-nav-wrapper {
+    // (Полная высота) - (высота mat-toolbar)
     height: calc(100% - 64px);
-  }
-
-  .side-nav {
-    height: 100%;
-    &__menu {
-      box-sizing: border-box;
-      padding: 24px;
-    }
   }
 }
