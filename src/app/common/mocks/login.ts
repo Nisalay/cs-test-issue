@@ -1,3 +1,3 @@
-export const loginMock = {
-  accessToken: 'mock_token'
+export const loginMock: LoginDTO = {
+  access_token: 'mock_token'
 }

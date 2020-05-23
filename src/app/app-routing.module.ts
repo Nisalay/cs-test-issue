@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from "@angular/router";
-import { GetProductsResolver } from './router/resolvers/get-products.resolver';
-import { GetDictionariesResolver } from './router/resolvers/get-dictionaries.resolver';
 
 const routes: Routes = [
   {

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { InnerLayoutComponent } from "./inner-layout.component";
 import { GetProductsResolver } from '../../router/resolvers/get-products.resolver';
 import { GetDictionariesResolver } from '../../router/resolvers/get-dictionaries.resolver';
+import { AuthGuard } from '../../router/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     resolve: {
       getDictionaries: GetDictionariesResolver,
     },
+    canActivate: [AuthGuard],
     children: [
       {
         path: `:${ RouteParamsKeys.CategoryName }`,
@@ -34,6 +36,7 @@ const routes: Routes = [
   providers: [
     GetDictionariesResolver,
     GetProductsResolver,
+    AuthGuard,
   ]
 })
 export class InnerLayoutRoutingModule { }

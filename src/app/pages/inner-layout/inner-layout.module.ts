@@ -17,6 +17,8 @@ import { EditTableDialogComponent } from './components/products-table/components
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [
     EditTableDialogComponent

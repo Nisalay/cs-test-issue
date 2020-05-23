@@ -7,6 +7,7 @@
         required
         autocomplete="off"
         formControlName="name">
+      <mat-error>Обязательное поле</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -16,6 +17,7 @@
         required
         autocomplete="off"
         formControlName="size">
+      <mat-error>Обязательное поле</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -25,16 +27,17 @@
         required
         autocomplete="off"
         formControlName="price">
+      <mat-error *ngIf="form.get('price').hasError('required')">Обязательное поле</mat-error>
       <mat-error *ngIf="form.get('price').hasError('pattern')">Необходимо указать только цифры</mat-error>
     </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="form.invalid"
+      (click)="save()">
+      {{ data.event === 'add' ? 'Добавить' : 'Сохранить' }}
+    </button>
   </form>
-  <button
-    mat-raised-button
-    color="accent"
-    [disabled]="form.invalid"
-    (click)="save()">
-    {{ data.event === 'add' ? 'Добавить' : 'Сохранить' }}
-  </button>
 </ng-template>
 
 <ng-template #deleteEvent>

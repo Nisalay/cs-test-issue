@@ -4,7 +4,8 @@
       <span>{{ (selectSideNavItem$ | async)?.name }}</span>
       <div class="topbar-actions">
         <button
-          mat-button>
+          mat-button
+          (click)="logout()">
           Выйти
         </button>
       </div>

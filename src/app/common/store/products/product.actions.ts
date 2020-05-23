@@ -5,7 +5,8 @@ export enum ProductsActionTypes {
   ReadProducts = '[Products] ReadProducts',
   UpdateProduct = '[Products] UpdateProduct',
   DeleteProduct = '[Products] DeleteProduct',
-  SetProductsSuccess = '[Products] SetProductsSuccess'
+  SetProductsSuccess = '[Products] SetProductsSuccess',
+  SetProductsInitialState = '[Products] SetInitialState',
 }
 
 export const CreateProduct = createAction(
@@ -31,4 +32,9 @@ export const DeleteProduct = createAction(
 export const SetProductsSuccess = createAction(
   ProductsActionTypes.SetProductsSuccess,
   props<{ products: ProductDTO[] }>()
+);
+
+
+export const SetProductsInitialState = createAction(
+  ProductsActionTypes.SetProductsInitialState,
 );

@@ -14,7 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductsTableComponent implements OnInit {
   public dataSource: MatTableDataSource<ProductDTO> = new MatTableDataSource();
-  public displayedColumns = ['Название', 'Размер', 'Стоимость', 'Действия'];
+  public displayedColumns = ['name', 'size', 'price', 'actions'];
+  public pending$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -26,9 +27,15 @@ export class ProductsTableComponent implements OnInit {
       .subscribe(products => {
         this.dataSource.data = products;
       });
+    this.pending$ = this.store.select(fromSelectors.products.selectPending);
   }
 
   public sortData(sort: Sort) {
+    this.dataSource.data = [...this.dataSource.data].sort((a, b) => {
+      const first = typeof a[sort.active] === 'string' ? a[sort.active].toLowerCase() : a[sort.active]
+      const second = typeof b[sort.active] === 'string' ? b[sort.active].toLowerCase() : a[sort.active]
+      return this.compare(first, second, sort.direction === 'asc')
+    })
   }
 
   public openDialog({ data, event }: EditTableDialogConfigDTO) {

@@ -4,6 +4,7 @@ export enum SideNavActionsTypes {
   ReadSideNavItems = '[SideNav] ReadSideNavItems',
   SetSideNavItems = '[SideNav] SetSideNavItems',
   SetSelectedSideNavItem = '[SideNav] SetSelectedSideNavItem',
+  SetSideNavInitialState = '[SideNav] SetSideNavInitialState',
 }
 
 export const ReadSideNavItems = createAction(
@@ -18,4 +19,9 @@ export const SetSideNavItems = createAction(
 export const SetSelectedSideNavItem = createAction(
   SideNavActionsTypes.SetSelectedSideNavItem,
   props<{ selectedItemCode: string }>()
+)
+
+
+export const SetSideNavInitialState = createAction(
+  SideNavActionsTypes.SetSideNavInitialState
 )
