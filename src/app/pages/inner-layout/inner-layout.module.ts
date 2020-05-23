@@ -12,13 +12,19 @@ import { MatTreeModule } from "@angular/material/tree";
 import { MatIconModule } from "@angular/material/icon";
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { MatTableModule } from "@angular/material/table";
+import { MatSortModule } from '@angular/material/sort';
+import { EditTableDialogComponent } from './components/products-table/components/edit-table-dialog/edit-table-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     InnerLayoutComponent,
     TopbarComponent,
     SideNavComponent,
-    ProductsTableComponent
+    ProductsTableComponent,
+    EditTableDialogComponent,
   ],
   imports: [
     InnerLayoutRoutingModule,
@@ -29,7 +35,14 @@ import { MatTableModule } from "@angular/material/table";
     MatTreeModule,
     MatIconModule,
     MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
+  entryComponents: [
+    EditTableDialogComponent
+  ]
 
 })
 export class InnerLayoutModule { }

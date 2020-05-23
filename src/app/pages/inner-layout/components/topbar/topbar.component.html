@@ -1,7 +1,7 @@
 <mat-toolbar class="topbar mat-elevation-z3">
   <mat-toolbar-row>
     <div class="topbar__content">
-      <span>Договоры</span>
+      <span>{{ (selectSideNavItem$ | async)?.name }}</span>
       <div class="topbar-actions">
         <button
           mat-button>

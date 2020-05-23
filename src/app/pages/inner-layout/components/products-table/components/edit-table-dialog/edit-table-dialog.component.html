@@ -1,0 +1,57 @@
+<ng-template [ngIf]="data.event !== 'delete'" [ngIfElse]="deleteEvent">
+  <form class="form" [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Название</mat-label>
+      <input
+        matInput
+        required
+        autocomplete="off"
+        formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Размер</mat-label>
+      <input
+        matInput
+        required
+        autocomplete="off"
+        formControlName="size">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Стоимость</mat-label>
+      <input
+        matInput
+        required
+        autocomplete="off"
+        formControlName="price">
+      <mat-error *ngIf="form.get('price').hasError('pattern')">Необходимо указать только цифры</mat-error>
+    </mat-form-field>
+  </form>
+  <button
+    mat-raised-button
+    color="accent"
+    [disabled]="form.invalid"
+    (click)="save()">
+    {{ data.event === 'add' ? 'Добавить' : 'Сохранить' }}
+  </button>
+</ng-template>
+
+<ng-template #deleteEvent>
+  <div class="delete">
+    <p>Вы уверены что хотите удалить данный товар?</p>
+    <div class="delete__actions">
+      <button
+        mat-button
+        color="accent"
+        (click)="delete(true)">
+        Да
+      </button>
+      <button
+        mat-stroked-button
+        (click)="delete(false)">
+        Нет
+      </button>
+    </div>
+  </div>
+</ng-template>

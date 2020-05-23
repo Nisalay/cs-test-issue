@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 export enum ProductsActionTypes {
   CreateProduct = '[Products] CreateProduct',
   ReadProducts = '[Products] ReadProducts',
+  UpdateProduct = '[Products] UpdateProduct',
   DeleteProduct = '[Products] DeleteProduct',
   SetProductsSuccess = '[Products] SetProductsSuccess'
 }
@@ -15,6 +16,11 @@ export const CreateProduct = createAction(
 export const ReadProducts = createAction(
   ProductsActionTypes.ReadProducts,
   props<ReadProductsDTO>()
+);
+
+export const UpdateProduct = createAction(
+  ProductsActionTypes.UpdateProduct,
+  props<ProductDTO>()
 );
 
 export const DeleteProduct = createAction(

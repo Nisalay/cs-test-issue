@@ -8,13 +8,13 @@ export const productsMock: { [categoryName: string]: ProductDTO[] } = {
     },
     {
       id: '2',
-      name: 'Adidas Yeezy Boost 2',
+      name: 'Reebok Classic',
       size: '42',
       price: 1500
     },
     {
       id: '3',
-      name: 'Adidas Yeezy Boost 2',
+      name: 'Nike React 7.0',
       size: '42',
       price: 1500
     }

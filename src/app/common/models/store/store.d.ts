@@ -1,8 +1,8 @@
 declare type StoreStateDTO<T> = { pending: boolean; data: T };
 
-interface State {
-  products: ProductDTO[],
-  sideNav: SideNavItemDTO[]
+declare interface AppState {
+  products: StoreStateDTO<ProductDTO[]>,
+  sideNav: StoreStateDTO<SideNavItemDTO[]> & {
+    selectedItemCode: string;
+  }
 }
-
-declare type AppState = { [P in keyof State]: StoreStateDTO<State[P]> }
