@@ -1,27 +1,40 @@
-# CsTestIssue
+# Общее описание
+Для "входа в систему" необходимо ввести логин и пароль **admin admin**
+При попытке входа с неверными данными, **отобразится ошибка о неудачном
+входе**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Для простоты понимания, в качестве предметной области была выбрана Одежда.  
+При переходе на страницу `products` динамически генерируется боковое меню
+используя **get-dictionaries.resolver.ts**
+(последний уровень вложенности открывает саму таблицу с продуктами)
+
+При выборе продукта в меню, происходит переход **по динамическому роуту** (реализован в `InnerLayoutRoutingModule`), в качестве параметра
+передается код продукта (в данном конкретном случае dresses или sneakers)
+При переходе, срабатывает **get-products.resolver.ts**,
+который и запрашивает необходимый список продуктов и определяет выбранный пункт меню
+используя action `ReadProducts()`
+
+Таким образом, даже поле обновления страницы, в сторе будет храниться необходимый
+список продуктов и соответственно, код выбранной категории
+
+В топбаре, в левой части отображается выбранный пункт меню, который получает 
+селектор `selectSideNavItem`
+
+При отображении продуктов имеется возможность **добавления** нового, **изменения** и **удаления** элементов
+из таблицы. Открывается соответствующее модальное окно.
+В нем реализована валидация на обязательность полей и на ввод
+только цифер в поле **Стоимость**.
+Изменения будут касаться только выбранной категории продуктов, т.е.
+после перехода между продуктами, изменения сохранятся
+При редактировании или добавлении элементов, появляется индикатор 
+загрузки длиной в 1000мс. Сделано для большей наглядности, что действие происходит асинхронно,
+и "сервер" может возвращать данный с задержкой
+
+Так же в таблице, у каждой колонки реализована **сортировка**
+
+При выходе из системы по кнопке "Выход", происходит переход
+на страницу логина и очищается стора. 
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
