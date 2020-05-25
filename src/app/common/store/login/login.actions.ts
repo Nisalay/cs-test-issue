@@ -5,7 +5,7 @@ export enum LoginActionsTypes {
   Logout = '[Login] Logout',
   LoginError = '[Login] LoginError',
   SetLoginData = '[Login] SetLoginData',
-  SetLoginInitialState = '[Login] SetLoginData',
+  SetLoginInitialState = '[Login] SetLoginInitialState',
 }
 
 /**
